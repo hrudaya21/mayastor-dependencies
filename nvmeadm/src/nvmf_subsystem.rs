@@ -38,7 +38,7 @@ impl Subsystem {
         let name = source
             .strip_prefix(SYSFS_NVME_CTRLR_PREFIX)
             .context(InvalidPath {
-                path: format!("{:?}", source),
+                path: format!("{source:?}"),
             })?
             .display()
             .to_string();
@@ -89,7 +89,7 @@ impl Subsystem {
 
         let mut file = OpenOptions::new()
             .write(true)
-            .open(&path)
+            .open(path)
             .context(FileIoFailed {
                 filename: &filename,
             })?;
@@ -103,7 +103,7 @@ impl Subsystem {
 
         let mut file = OpenOptions::new()
             .write(true)
-            .open(&path)
+            .open(path)
             .context(FileIoFailed {
                 filename: &filename,
             })?;
@@ -117,7 +117,7 @@ impl Subsystem {
 
         let mut file = OpenOptions::new()
             .write(true)
-            .open(&path)
+            .open(path)
             .context(FileIoFailed {
                 filename: &filename,
             })?;
